@@ -1,0 +1,48 @@
+import &#39;package:flutter/material.dart&#39;;
+void main() {
+runApp(
+MaterialApp(
+home: Scaffold(
+appBar: AppBar(
+title: const Text(
+&quot;Welcome&quot;,
+style: TextStyle(fontSize: 50),
+),
+),
+body: Center(
+child: Row(
+mainAxisAlignment: MainAxisAlignment.spaceAround,
+crossAxisAlignment: CrossAxisAlignment.center,
+children: [
+Container(
+color: Colors.green,
+padding: const EdgeInsets.all(10),
+child: const Text(
+&quot;Welcome to student&quot;,
+style: TextStyle(fontSize: 20),
+textAlign: TextAlign.center,
+),
+),
+Container(
+color: Colors.blue,
+padding: const EdgeInsets.all(10),
+child: const Text(
+&quot;Hii&quot;,
+style: TextStyle(fontSize: 20),
+),
+),
+Container(
+color: Colors.pink,
+padding: const EdgeInsets.all(10),
+child: const Text(
+&quot;How are you my friend&quot;,
+style: TextStyle(fontSize: 20),
+),
+),
+],
+),
+),
+),
+),
+);
+}
