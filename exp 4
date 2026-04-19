@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(title: Text('Form App')),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: _LoginForm(),
+        ),
+      ),
+    ));
+class _LoginForm extends StatefulWidget {
+  @override
+  State<_LoginForm> createState() => _LoginFormState();
+}
+class _LoginFormState extends State<_LoginForm> {
+  final _key = GlobalKey<FormState>();
+
+  Widget buildField(String hint,
+          {bool obscure = false, TextInputType? type}) =>
+      Padding(
+        padding: EdgeInsets.only(bottom: 16),
+        child: TextFormField(
+          obscureText: obscure,
+          keyboardType: type,
+          decoration: InputDecoration(
+            hintText: hint,
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+          ),
+          validator: (v) => v!.isEmpty ? 'Enter $hint' : null,
+        ),
+      );
+  @override
+  Widget build(BuildContext context) => Form(
+        key: _key,
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            buildField('Name'),
+            buildField('Email', type: TextInputType.emailAddress),
+            buildField('Password', obscure: true),
+            SizedBox(height: 10),
+            SizedBox(
+              width: 150,
+              height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_key.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Form Submitted')));
+                  }
+                },
+                child: Text('Submit'),
+              ),
+            )
+          ],
+        ),
+      );
+}
